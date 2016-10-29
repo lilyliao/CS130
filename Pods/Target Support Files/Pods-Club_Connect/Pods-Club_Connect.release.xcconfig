@@ -1,0 +1,7 @@
+CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Bolts" "${PODS_ROOT}/Headers/Public/FBSDKCoreKit" "${PODS_ROOT}/Headers/Public/FBSDKLoginKit" "${PODS_ROOT}/Headers/Public/FBSDKShareKit" "${PODS_ROOT}/Headers/Public/FBSDKShareKit/FBSDKShareKit" "${PODS_ROOT}/Headers/Public/KinveyKit" KinveyKit-1.41.1/include
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/KinveyKit/KinveyKit-1.41.1"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Bolts" -isystem "${PODS_ROOT}/Headers/Public/FBSDKCoreKit" -isystem "${PODS_ROOT}/Headers/Public/FBSDKLoginKit" -isystem "${PODS_ROOT}/Headers/Public/FBSDKShareKit" -isystem "${PODS_ROOT}/Headers/Public/FBSDKShareKit/FBSDKShareKit" -isystem "${PODS_ROOT}/Headers/Public/KinveyKit"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Bolts" -l"FBSDKCoreKit" -l"FBSDKLoginKit" -l"FBSDKShareKit" -l"KinveyKit" -l"sqlite3" -framework "Accounts" -framework "CoreGraphics" -framework "CoreLocation" -framework "MobileCoreServices" -framework "Security" -framework "Social" -framework "SystemConfiguration" -weak_framework "Accounts" -weak_framework "AudioToolbox" -weak_framework "CoreGraphics" -weak_framework "CoreLocation" -weak_framework "Foundation" -weak_framework "QuartzCore" -weak_framework "Security" -weak_framework "Social" -weak_framework "UIKit" -weak_framework "WebKit"
+PODS_ROOT = ${SRCROOT}/Pods

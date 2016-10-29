@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A6F4DAACC79EB077F61B782 /* libPods-Club_Connect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E1EADA2A8B7A445FE038222 /* libPods-Club_Connect.a */; };
+		C4334F961DBD8C4E00940019 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4334F951DBD8C4E00940019 /* LogInViewController.swift */; };
+		C45126041DBD821200D8CA60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45126031DBD821200D8CA60 /* AppDelegate.swift */; };
+		C45126061DBD821200D8CA60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45126051DBD821200D8CA60 /* ViewController.swift */; };
+		C45126091DBD821200D8CA60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45126071DBD821200D8CA60 /* Main.storyboard */; };
+		C451260B1DBD821200D8CA60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C451260A1DBD821200D8CA60 /* Assets.xcassets */; };
+		C451260E1DBD821200D8CA60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C451260C1DBD821200D8CA60 /* LaunchScreen.storyboard */; };
+		C49730ED1DC53060003B76DC /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49730EC1DC53060003B76DC /* EventsTableViewController.swift */; };
+		C49730F81DC54BA7003B76DC /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49730F71DC54BA7003B76DC /* FeedTableViewController.swift */; };
+		C49730FA1DC5520D003B76DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49730F91DC5520D003B76DC /* Event.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5E1EADA2A8B7A445FE038222 /* libPods-Club_Connect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Club_Connect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		963DFC789AECE651AA3111B3 /* Pods-Club_Connect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Club_Connect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect.debug.xcconfig"; sourceTree = "<group>"; };
+		B285C385346D9EFA3336A293 /* Pods-Club_Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Club_Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect.release.xcconfig"; sourceTree = "<group>"; };
+		C4334F951DBD8C4E00940019 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		C43CE46E1DBD83FA009EA6BF /* Club_Connect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Club_Connect-Bridging-Header.h"; sourceTree = "<group>"; };
+		C45126001DBD821200D8CA60 /* Club_Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Club_Connect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C45126031DBD821200D8CA60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C45126051DBD821200D8CA60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C45126081DBD821200D8CA60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C451260A1DBD821200D8CA60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C451260D1DBD821200D8CA60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C451260F1DBD821200D8CA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C49730EC1DC53060003B76DC /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
+		C49730F71DC54BA7003B76DC /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		C49730F91DC5520D003B76DC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		C4C13ADF1DC29EB8003E0C70 /* Club_Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Club_Connect.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C45125FD1DBD821200D8CA60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A6F4DAACC79EB077F61B782 /* libPods-Club_Connect.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1AB65E121FD17C71ACC821E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E1EADA2A8B7A445FE038222 /* libPods-Club_Connect.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C45125F71DBD821200D8CA60 = {
+			isa = PBXGroup;
+			children = (
+				C45126021DBD821200D8CA60 /* Club_Connect */,
+				C45126011DBD821200D8CA60 /* Products */,
+				E8BDA6A911CF726011616D07 /* Pods */,
+				B1AB65E121FD17C71ACC821E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C45126011DBD821200D8CA60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C45126001DBD821200D8CA60 /* Club_Connect.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C45126021DBD821200D8CA60 /* Club_Connect */ = {
+			isa = PBXGroup;
+			children = (
+				C4C13ADF1DC29EB8003E0C70 /* Club_Connect.entitlements */,
+				C45126031DBD821200D8CA60 /* AppDelegate.swift */,
+				C49730FB1DC55E5A003B76DC /* ViewControllers */,
+				C49730F61DC53D93003B76DC /* Helpers */,
+				C451260A1DBD821200D8CA60 /* Assets.xcassets */,
+				C451260F1DBD821200D8CA60 /* Info.plist */,
+			);
+			path = Club_Connect;
+			sourceTree = "<group>";
+		};
+		C49730F61DC53D93003B76DC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C45126071DBD821200D8CA60 /* Main.storyboard */,
+				C451260C1DBD821200D8CA60 /* LaunchScreen.storyboard */,
+				C43CE46E1DBD83FA009EA6BF /* Club_Connect-Bridging-Header.h */,
+				C49730F91DC5520D003B76DC /* Event.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		C49730FB1DC55E5A003B76DC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C45126051DBD821200D8CA60 /* ViewController.swift */,
+				C49730F71DC54BA7003B76DC /* FeedTableViewController.swift */,
+				C4334F951DBD8C4E00940019 /* LogInViewController.swift */,
+				C49730EC1DC53060003B76DC /* EventsTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E8BDA6A911CF726011616D07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				963DFC789AECE651AA3111B3 /* Pods-Club_Connect.debug.xcconfig */,
+				B285C385346D9EFA3336A293 /* Pods-Club_Connect.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C45125FF1DBD821200D8CA60 /* Club_Connect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C45126121DBD821200D8CA60 /* Build configuration list for PBXNativeTarget "Club_Connect" */;
+			buildPhases = (
+				BE50717A33740F3A3BF9F90F /* Check Pods Manifest.lock */,
+				C45125FC1DBD821200D8CA60 /* Sources */,
+				C45125FD1DBD821200D8CA60 /* Frameworks */,
+				C45125FE1DBD821200D8CA60 /* Resources */,
+				B34FD8E9FDB3DAE32510E27B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Club_Connect;
+			productName = Club_Connect;
+			productReference = C45126001DBD821200D8CA60 /* Club_Connect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C45125F81DBD821200D8CA60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Li-Wei Tseng";
+				TargetAttributes = {
+					C45125FF1DBD821200D8CA60 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 82R3ZDW365;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = C45125FB1DBD821200D8CA60 /* Build configuration list for PBXProject "Club_Connect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C45125F71DBD821200D8CA60;
+			productRefGroup = C45126011DBD821200D8CA60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C45125FF1DBD821200D8CA60 /* Club_Connect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C45125FE1DBD821200D8CA60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C451260E1DBD821200D8CA60 /* LaunchScreen.storyboard in Resources */,
+				C451260B1DBD821200D8CA60 /* Assets.xcassets in Resources */,
+				C45126091DBD821200D8CA60 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B34FD8E9FDB3DAE32510E27B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE50717A33740F3A3BF9F90F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C45125FC1DBD821200D8CA60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C49730FA1DC5520D003B76DC /* Event.swift in Sources */,
+				C45126061DBD821200D8CA60 /* ViewController.swift in Sources */,
+				C49730F81DC54BA7003B76DC /* FeedTableViewController.swift in Sources */,
+				C45126041DBD821200D8CA60 /* AppDelegate.swift in Sources */,
+				C49730ED1DC53060003B76DC /* EventsTableViewController.swift in Sources */,
+				C4334F961DBD8C4E00940019 /* LogInViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C45126071DBD821200D8CA60 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C45126081DBD821200D8CA60 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C451260C1DBD821200D8CA60 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C451260D1DBD821200D8CA60 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C45126101DBD821200D8CA60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C45126111DBD821200D8CA60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C45126131DBD821200D8CA60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963DFC789AECE651AA3111B3 /* Pods-Club_Connect.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Club_Connect/Club_Connect.entitlements;
+				DEVELOPMENT_TEAM = 82R3ZDW365;
+				INFOPLIST_FILE = Club_Connect/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Club-Connect";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Club_Connect/Club_Connect-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C45126141DBD821200D8CA60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B285C385346D9EFA3336A293 /* Pods-Club_Connect.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Club_Connect/Club_Connect.entitlements;
+				DEVELOPMENT_TEAM = 82R3ZDW365;
+				INFOPLIST_FILE = Club_Connect/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Club-Connect";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Club_Connect/Club_Connect-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C45125FB1DBD821200D8CA60 /* Build configuration list for PBXProject "Club_Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C45126101DBD821200D8CA60 /* Debug */,
+				C45126111DBD821200D8CA60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C45126121DBD821200D8CA60 /* Build configuration list for PBXNativeTarget "Club_Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C45126131DBD821200D8CA60 /* Debug */,
+				C45126141DBD821200D8CA60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C45125F81DBD821200D8CA60 /* Project object */;
+}
