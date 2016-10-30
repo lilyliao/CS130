@@ -26,7 +26,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.current() != nil)
         {
             
-//            performSegue(withIdentifier: "loginSegue", sender: self)
+            performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
 
