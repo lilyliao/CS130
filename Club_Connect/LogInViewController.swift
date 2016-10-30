@@ -16,7 +16,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureFacebook()
-        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background.jpg")
+        self.view.insertSubview(backgroundImage, at: 0)
         // Do any additional setup after loading the view.
     }
     
@@ -24,7 +26,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.current() != nil)
         {
             
-            performSegue(withIdentifier: "loginSegue", sender: self)
+//            performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
 

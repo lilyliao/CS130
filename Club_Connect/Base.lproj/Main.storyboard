@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -151,13 +152,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PV8-DO-icf" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="16" y="318" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PV8-DO-icf" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="16" y="395" width="343" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ClubConnect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-Cx-Odq">
+                                <rect key="frame" x="16" y="105" width="343" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Hvk-UI-vaT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check in fast, stay connected." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-2x-va9">
+                                <rect key="frame" x="16" y="183" width="343" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="cEf-Jy-1oG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dLZ-2x-va9" firstAttribute="trailing" secondItem="QRb-Cx-Odq" secondAttribute="trailing" id="2Ld-D2-rp5"/>
+                            <constraint firstItem="QRb-Cx-Odq" firstAttribute="centerX" secondItem="PV8-DO-icf" secondAttribute="centerX" id="CIP-tG-Q1G"/>
+                            <constraint firstItem="dLZ-2x-va9" firstAttribute="top" secondItem="QRb-Cx-Odq" secondAttribute="bottom" constant="36" id="Ct3-KQ-zXw"/>
+                            <constraint firstItem="dLZ-2x-va9" firstAttribute="leading" secondItem="QRb-Cx-Odq" secondAttribute="leading" id="I0Q-pz-R23"/>
+                            <constraint firstItem="QRb-Cx-Odq" firstAttribute="width" secondItem="FST-fJ-yDC" secondAttribute="width" constant="-32" id="OQX-Je-nDY"/>
+                            <constraint firstItem="PV8-DO-icf" firstAttribute="leading" secondItem="FST-fJ-yDC" secondAttribute="leadingMargin" id="Tho-Kp-aPO"/>
+                            <constraint firstItem="PV8-DO-icf" firstAttribute="trailing" secondItem="FST-fJ-yDC" secondAttribute="trailingMargin" id="VPh-CI-piW"/>
+                            <constraint firstItem="QyO-IO-Vv0" firstAttribute="top" secondItem="PV8-DO-icf" secondAttribute="bottom" constant="242" id="jSG-Fj-ygR"/>
+                            <constraint firstItem="QRb-Cx-Odq" firstAttribute="top" secondItem="wyW-hT-wPn" secondAttribute="bottom" constant="85" id="lut-fG-971"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="btnFacebook" destination="PV8-DO-icf" id="4mR-52-wn5"/>
@@ -166,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AT-TL-k8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-318" y="1124"/>
+            <point key="canvasLocation" x="-319.19999999999999" y="1123.9880059970017"/>
         </scene>
         <!--Events-->
         <scene sceneID="oNe-on-71a">
