@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5kb-W7-vgR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5kb-W7-vgR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="564" y="1124"/>
         </scene>
-        <!--Events Table View Controller-->
+        <!--Officers' Club Events-->
         <scene sceneID="Fu8-dw-NbI">
             <objects>
                 <tableViewController id="8l0-w3-Hxc" customClass="EventsTableViewController" customModule="Club_Connect" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,13 +89,13 @@
                             <outlet property="delegate" destination="8l0-w3-Hxc" id="Inc-YO-Ncr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4ey-Lj-59F"/>
+                    <navigationItem key="navigationItem" title="Officers' Club Events" id="4ey-Lj-59F"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrM-yW-wZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2447.1999999999998" y="1519.7901049475263"/>
         </scene>
-        <!--Feed Table View Controller-->
+        <!--Personal Events Feed-->
         <scene sceneID="v3Y-Fl-4tK">
             <objects>
                 <tableViewController id="vs3-To-Pza" customClass="FeedTableViewController" customModule="Club_Connect" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,7 +134,7 @@
                             <outlet property="delegate" destination="vs3-To-Pza" id="ZFw-bS-d4H"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="BCk-Ms-xxf"/>
+                    <navigationItem key="navigationItem" title="Personal Events Feed" id="BCk-Ms-xxf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw2-Vw-ZHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

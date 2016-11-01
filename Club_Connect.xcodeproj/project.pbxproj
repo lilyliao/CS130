@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A6F4DAACC79EB077F61B782 /* libPods-Club_Connect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E1EADA2A8B7A445FE038222 /* libPods-Club_Connect.a */; };
+		4C27A508263BD0452D43F6D3 /* libPods-Club_Connect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4269FC9304033196C494EBB8 /* libPods-Club_Connect.a */; };
 		C4334F961DBD8C4E00940019 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4334F951DBD8C4E00940019 /* LogInViewController.swift */; };
 		C45126041DBD821200D8CA60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45126031DBD821200D8CA60 /* AppDelegate.swift */; };
 		C45126061DBD821200D8CA60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45126051DBD821200D8CA60 /* ViewController.swift */; };
@@ -17,12 +17,12 @@
 		C49730ED1DC53060003B76DC /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49730EC1DC53060003B76DC /* EventsTableViewController.swift */; };
 		C49730F81DC54BA7003B76DC /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49730F71DC54BA7003B76DC /* FeedTableViewController.swift */; };
 		C49730FA1DC5520D003B76DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49730F91DC5520D003B76DC /* Event.swift */; };
+		C4AFDF901DC92F8800F6A08F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AFDF8F1DC92F8800F6A08F /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5E1EADA2A8B7A445FE038222 /* libPods-Club_Connect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Club_Connect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		963DFC789AECE651AA3111B3 /* Pods-Club_Connect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Club_Connect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect.debug.xcconfig"; sourceTree = "<group>"; };
-		B285C385346D9EFA3336A293 /* Pods-Club_Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Club_Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect.release.xcconfig"; sourceTree = "<group>"; };
+		4269FC9304033196C494EBB8 /* libPods-Club_Connect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Club_Connect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8568D00908F851A0C45571ED /* Pods-Club_Connect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Club_Connect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect.debug.xcconfig"; sourceTree = "<group>"; };
 		C4334F951DBD8C4E00940019 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C43CE46E1DBD83FA009EA6BF /* Club_Connect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Club_Connect-Bridging-Header.h"; sourceTree = "<group>"; };
 		C45126001DBD821200D8CA60 /* Club_Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Club_Connect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +35,9 @@
 		C49730EC1DC53060003B76DC /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		C49730F71DC54BA7003B76DC /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		C49730F91DC5520D003B76DC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		C4AFDF8F1DC92F8800F6A08F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C4C13ADF1DC29EB8003E0C70 /* Club_Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Club_Connect.entitlements; sourceTree = "<group>"; };
+		F95991EE6FB3BB7BC2F6BCAB /* Pods-Club_Connect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Club_Connect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +45,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A6F4DAACC79EB077F61B782 /* libPods-Club_Connect.a in Frameworks */,
+				4C27A508263BD0452D43F6D3 /* libPods-Club_Connect.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B1AB65E121FD17C71ACC821E /* Frameworks */ = {
+		1FCAFC33DC8ACA5FFA46E5A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E1EADA2A8B7A445FE038222 /* libPods-Club_Connect.a */,
+				4269FC9304033196C494EBB8 /* libPods-Club_Connect.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -63,8 +65,8 @@
 			children = (
 				C45126021DBD821200D8CA60 /* Club_Connect */,
 				C45126011DBD821200D8CA60 /* Products */,
-				E8BDA6A911CF726011616D07 /* Pods */,
-				B1AB65E121FD17C71ACC821E /* Frameworks */,
+				E62F9B520CFCF9BEABE832CE /* Pods */,
+				1FCAFC33DC8ACA5FFA46E5A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,15 +109,16 @@
 				C49730F71DC54BA7003B76DC /* FeedTableViewController.swift */,
 				C4334F951DBD8C4E00940019 /* LogInViewController.swift */,
 				C49730EC1DC53060003B76DC /* EventsTableViewController.swift */,
+				C4AFDF8F1DC92F8800F6A08F /* ProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		E8BDA6A911CF726011616D07 /* Pods */ = {
+		E62F9B520CFCF9BEABE832CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				963DFC789AECE651AA3111B3 /* Pods-Club_Connect.debug.xcconfig */,
-				B285C385346D9EFA3336A293 /* Pods-Club_Connect.release.xcconfig */,
+				8568D00908F851A0C45571ED /* Pods-Club_Connect.debug.xcconfig */,
+				F95991EE6FB3BB7BC2F6BCAB /* Pods-Club_Connect.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -127,11 +130,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C45126121DBD821200D8CA60 /* Build configuration list for PBXNativeTarget "Club_Connect" */;
 			buildPhases = (
-				BE50717A33740F3A3BF9F90F /* Check Pods Manifest.lock */,
+				5A2DF1E4D4B4ACB142FD7440 /* [CP] Check Pods Manifest.lock */,
 				C45125FC1DBD821200D8CA60 /* Sources */,
 				C45125FD1DBD821200D8CA60 /* Frameworks */,
 				C45125FE1DBD821200D8CA60 /* Resources */,
-				B34FD8E9FDB3DAE32510E27B /* Copy Pods Resources */,
+				A8CB9A7CF165AEF3425713EB /* [CP] Embed Pods Frameworks */,
+				7A0EC0DA7EDFF334DB563193 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,14 +200,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B34FD8E9FDB3DAE32510E27B /* Copy Pods Resources */ = {
+		5A2DF1E4D4B4ACB142FD7440 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7A0EC0DA7EDFF334DB563193 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,19 +230,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BE50717A33740F3A3BF9F90F /* Check Pods Manifest.lock */ = {
+		A8CB9A7CF165AEF3425713EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Club_Connect/Pods-Club_Connect-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -237,6 +256,7 @@
 				C45126061DBD821200D8CA60 /* ViewController.swift in Sources */,
 				C49730F81DC54BA7003B76DC /* FeedTableViewController.swift in Sources */,
 				C45126041DBD821200D8CA60 /* AppDelegate.swift in Sources */,
+				C4AFDF901DC92F8800F6A08F /* ProfileViewController.swift in Sources */,
 				C49730ED1DC53060003B76DC /* EventsTableViewController.swift in Sources */,
 				C4334F961DBD8C4E00940019 /* LogInViewController.swift in Sources */,
 			);
@@ -359,7 +379,7 @@
 		};
 		C45126131DBD821200D8CA60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 963DFC789AECE651AA3111B3 /* Pods-Club_Connect.debug.xcconfig */;
+			baseConfigurationReference = 8568D00908F851A0C45571ED /* Pods-Club_Connect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Club_Connect/Club_Connect.entitlements;
@@ -375,7 +395,7 @@
 		};
 		C45126141DBD821200D8CA60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B285C385346D9EFA3336A293 /* Pods-Club_Connect.release.xcconfig */;
+			baseConfigurationReference = F95991EE6FB3BB7BC2F6BCAB /* Pods-Club_Connect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Club_Connect/Club_Connect.entitlements;

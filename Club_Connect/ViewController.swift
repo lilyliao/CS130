@@ -17,14 +17,17 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     var highlightView   : UIView = UIView()
     
-    var nutrition : AnyObject?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initializeBarcode()
+    }
+    /**
+        Initialize iPhone camera and prepare to scan for barcode
+     **/
+    func initializeBarcode () {
         self.highlightView.autoresizingMask = [UIViewAutoresizing.flexibleBottomMargin, UIViewAutoresizing.flexibleBottomMargin]
         
-        // Select the color you want for the completed scan reticle
+        // Select the color for the completed scan reticle
         self.highlightView.layer.borderColor = UIColor.green.cgColor
         self.highlightView.layer.borderWidth = 3
         
@@ -35,23 +38,17 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // this is the camera
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
-        
-        
         do {
             let input : AVCaptureDeviceInput? = try AVCaptureDeviceInput(device: device)
             session.addInput(input)
         } catch  {
-            
-            //            print(error)
+            print(error)
         }
-        
-        
         
         let output = AVCaptureMetadataOutput()
         output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         session.addOutput(output)
         output.metadataObjectTypes = output.availableMetadataObjectTypes
-        
         
         previewLayer = AVCaptureVideoPreviewLayer(session: session) //layerWithSession(session) as AVCaptureVideoPreviewLayer
         previewLayer.frame = self.view.bounds
@@ -60,22 +57,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // Start the scanner. You'll have to end it yourself later.
         session.startRunning()
-        
+
     }
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-    //        if segue.identifier == "nutritionSegue" {
-    //            // Setup new view controller
-    //            if let destinationVC = segue.destination as? NutritionTableViewController{
-    //                //                if let jsonResult = self.nutrition as? Dictionary<String, String> {
-    //                //                    print(jsonResult)
-    //                //                    destinationVC.nutritionInfo = jsonResult
-    //                //                }
-    //                destinationVC.nutritionInfoRaw = nutrition
-    //            }
-    //        }
-    //    }
-    //
     // This is called when we find a known barcode type with the camera.
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
