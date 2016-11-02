@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITabBarControllerDelegate{
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var bruinIDTextField: UITextField!
     @IBOutlet weak var genderControl: UISegmentedControl!
@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tabBarController?.delegate = self;
         // Do any additional setup after loading the view.
     }
 
@@ -27,13 +27,33 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func submit(sender: UIButton) {
+        //TO DO: replace with real logic
         print(nameTextField.text);
         print(bruinIDTextField.text);
         print(genderControl.titleForSegment(at: genderControl.selectedSegmentIndex));
-
-        
     }
     
+    func tabBarController(_ tabBarController: UITabBarController,
+                                   shouldSelect viewController: UIViewController) -> Bool
+    {
+        if (nameTextField.text!.isEmpty || bruinIDTextField.text!.isEmpty || ageTextField.text!.isEmpty || majorTextField.text!.isEmpty) {
+            presentAlert();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    
+    func presentAlert() {
+        let alertController = UIAlertController(title: "Incomplete Profile", message: "Please fill out all fields.", preferredStyle: UIAlertControllerStyle.alert)
+  
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

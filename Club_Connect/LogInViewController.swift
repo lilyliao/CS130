@@ -59,6 +59,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginManager.logOut()
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var tabBarController = segue.destination as! UITabBarController;
+        tabBarController.selectedIndex = 2;
+    }
+    
     /*
     // MARK: - Navigation
 
