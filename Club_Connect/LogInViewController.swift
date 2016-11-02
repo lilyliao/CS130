@@ -9,7 +9,7 @@
 import UIKit
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    let PROFILE_TAB_INDEX = 2
     
     @IBOutlet weak var btnFacebook: FBSDKLoginButton!
     
@@ -71,7 +71,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var tabBarController = segue.destination as! UITabBarController;
-        tabBarController.selectedIndex = 2;
+        tabBarController.selectedIndex = PROFILE_TAB_INDEX;
     }
     
     /*
