@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
     @IBOutlet weak var genderControl: UISegmentedControl!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var majorTextField: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = self;
@@ -26,11 +26,20 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func submit(sender: UIButton) {
+    @IBAction func submit(sender: UIButton)
+    {
         //TO DO: replace with real logic
         print(nameTextField.text);
         print(bruinIDTextField.text);
         print(genderControl.titleForSegment(at: genderControl.selectedSegmentIndex));
+    }
+    
+    @IBAction func logout(sender: UIButton)
+    {
+        //TO DO: replace with real logic
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        self.dismiss(animated: true, completion: nil);
     }
     
     func tabBarController(_ tabBarController: UITabBarController,
@@ -45,7 +54,8 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         }
     }
     
-    func presentAlert() {
+    func presentAlert()
+    {
         let alertController = UIAlertController(title: "Incomplete Profile", message: "Please fill out all fields.", preferredStyle: UIAlertControllerStyle.alert)
   
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in

@@ -66,10 +66,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
-
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         var tabBarController = segue.destination as! UITabBarController;
         tabBarController.selectedIndex = PROFILE_TAB_INDEX;
     }
