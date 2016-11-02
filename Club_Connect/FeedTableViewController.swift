@@ -13,6 +13,14 @@ class FeedTableViewController: UITableViewController {
     var events:[Event] = []
     
     override func viewDidLoad() {
+        getPersonalEventFeed()
+        super.viewDidLoad()
+    }
+
+    /**
+        Get Personal Event Feed from Facebook Graph API
+     **/
+    func getPersonalEventFeed() {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/events", parameters: nil)
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             
@@ -29,46 +37,12 @@ class FeedTableViewController: UITableViewController {
                         }
                     }
                     
-                self.tableView.reloadData()
+                    self.tableView.reloadData()
                 }
                 
             }
         })
-
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
     }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/events", parameters: nil)
-//        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-//            
-//            if ((error) != nil) {
-//                // Process error
-//                print("Error: \(error)")
-//            } else {
-//                if let dict = result as? NSDictionary {
-//                    if let objs = dict.object(forKey: "data") as? [NSDictionary] {
-//                        for obj in objs {
-//                            let event = Event(id: obj["id"] as? String, name: obj["name"] as? String, description: obj["description"] as? String, start_time: obj["start_time"] as? String, end_time: obj["end_time"] as? String, rsvp_status: obj["rsvp_status"] as? String)
-//                            self.events.append(event)
-//                            print(event.name)
-//                        }
-//                    }
-//
-//                    
-//                }
-//                
-//            }
-//        })
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

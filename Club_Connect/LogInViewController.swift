@@ -15,17 +15,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureFacebook()
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background.jpg")
-        self.view.insertSubview(backgroundImage, at: 0)
+        configureFacebook()
+        setBackground()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if (FBSDKAccessToken.current() != nil)
         {
-            
             performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
@@ -35,6 +32,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+        Set Background Image for Log In Page
+     **/
+    func setBackground() {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background.jpg")
+        self.view.insertSubview(backgroundImage, at: 0)
+    }
+    
+    /**
+        Configure Facebook Graph API permissions
+     **/
     func configureFacebook(){
         btnFacebook.readPermissions = ["public_profile", "email", "user_friends", "user_events", "user_managed_groups", "pages_show_list"];
         
@@ -48,7 +57,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // Process error
                 print("Error: \(error)")
             } else {
-                print(result)
+                print("Log in successfully!")
             }
         }
     }
