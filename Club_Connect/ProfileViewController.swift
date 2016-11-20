@@ -29,9 +29,18 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
     @IBAction func submit(sender: UIButton)
     {
         //TO DO: replace with real logic
-        print(nameTextField.text);
-        print(bruinIDTextField.text);
-        print(genderControl.titleForSegment(at: genderControl.selectedSegmentIndex));
+//        print(nameTextField.text);
+//        print(bruinIDTextField.text);
+//        print(genderControl.titleForSegment(at: genderControl.selectedSegmentIndex));
+        
+        KCSUser.active().setValue(nameTextField.text, forAttribute: "name")
+        KCSUser.active().setValue(bruinIDTextField.text, forAttribute: "UID")
+        KCSUser.active().setValue(ageTextField.text, forAttribute: "age")
+        KCSUser.active().setValue(majorTextField.text, forAttribute: "major")
+        KCSUser.active().setValue(genderControl.titleForSegment(at: genderControl.selectedSegmentIndex), forAttribute: "gender")
+        KCSUser.active().save { (error) -> Void in
+            print(error)
+        }
     }
     
     @IBAction func logout(sender: UIButton)

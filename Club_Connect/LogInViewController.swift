@@ -51,13 +51,23 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large)"]).start { (connection, resultObject, error) -> Void in
-            
-            if ((error) != nil) {
-                // Process error
+//        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large)"]).start { (connection, resultObject, error) -> Void in
+//            
+//            
+//            if ((error) != nil) {
+//                // Process error
+//                print("Error: \(error)")
+//            } else {
+//                print("Log in successfully!")
+//            }
+//        }
+        KCSUser.login(
+            withSocialIdentity: .socialIDFacebook, //.socialIDTwitter, or .socialIDLinkedIn, or .socialIDSalesforce
+            accessDictionary: [ KCSUserAccessTokenKey : FBSDKAccessToken.current().tokenString ]
+        ) { (user, error, actionResult) in
+            if let error = error {
+                //handle error
                 print("Error: \(error)")
-            } else {
-                print("Log in successfully!")
             }
         }
     }
@@ -70,7 +80,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        var tabBarController = segue.destination as! UITabBarController;
+        let tabBarController = segue.destination as! UITabBarController;
         tabBarController.selectedIndex = PROFILE_TAB_INDEX;
     }
     
