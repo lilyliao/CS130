@@ -29,12 +29,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+var graph = require('fbgraph');
+
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
   callbackURL: CALLBACK_URL,
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
+    graph.setAccessToken(accessToken);
     done(null, profile);
   });
 }));
@@ -47,7 +50,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var routes = require('./routes/index')(passport);
+var routes = require('./routes/index')(passport, graph);
 var users = require('./routes/users');
 
 app.use('/', routes);

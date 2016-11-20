@@ -13,7 +13,7 @@ var promise = Kinvey.ping().then(function(response) {
   console.log('Kinvey Ping Failed. Response: ' + error.description);
 });
 
-module.exports = function (passport) {
+module.exports = function (passport, graph) {
 	router.get('/auth/facebook', passport.authenticate('facebook'));
 
 	router.get('/auth/facebook/callback', passport.authenticate('facebook'), function (req, res) {
@@ -22,10 +22,22 @@ module.exports = function (passport) {
 	});
 
 	router.get('/success', function(req, res, next) {
-		console.log(passport.session.user);
-	  res.render('dashboard.ejs', {
-	  	user: passport.session.user
-	  });
+		var options = {
+		    timeout:  3000
+		  , pool:     { maxSockets:  Infinity }
+		  , headers:  { connection:  "keep-alive" }
+		};
+		graph.setOptions(options).get("/" + passport.session.user.id + "/events", function(err, events) {
+			if (err) {
+				res.end(err);
+			}
+			else {
+		    	console.log(events);
+			    res.render('dashboard.ejs', {
+				  	user: passport.session.user
+				});
+			}
+		  });
 	});
 
 	router.get('/error', function(req, res, next) {
