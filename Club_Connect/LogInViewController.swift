@@ -10,10 +10,16 @@ import UIKit
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     let PROFILE_TAB_INDEX = 2
-    
+    let FEED_TAB_INDEX = 0
+
+    var isNewUser = KCSUser.active() == nil
+
     @IBOutlet weak var btnFacebook: FBSDKLoginButton!
     
     override func viewDidLoad() {
+        
+
+
         super.viewDidLoad()
         configureFacebook()
         setBackground()
@@ -61,15 +67,26 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 //                print("Log in successfully!")
 //            }
 //        }
+        print("is new user:", isNewUser)
+       
+        
         KCSUser.login(
             withSocialIdentity: .socialIDFacebook, //.socialIDTwitter, or .socialIDLinkedIn, or .socialIDSalesforce
             accessDictionary: [ KCSUserAccessTokenKey : FBSDKAccessToken.current().tokenString ]
         ) { (user, error, actionResult) in
-            if let error = error {
+            if let user = user {
+                //the log-in was successful and the user is now the active user and credentials saved
+                //hide log-in view and show main app content
+                print("User: \(user)")
+            }
+            else if let error = error {
                 //handle error
                 print("Error: \(error)")
             }
         }
+        
+        
+        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!)
@@ -81,7 +98,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         let tabBarController = segue.destination as! UITabBarController;
-        tabBarController.selectedIndex = PROFILE_TAB_INDEX;
+        if (isNewUser) {
+            tabBarController.selectedIndex = PROFILE_TAB_INDEX
+        }
+        else {
+            tabBarController.selectedIndex = FEED_TAB_INDEX
+        }
     }
     
     /*

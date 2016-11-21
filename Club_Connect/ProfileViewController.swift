@@ -18,8 +18,10 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = self;
-        // Do any additional setup after loading the view.
+        loadExisitingValues()
+    // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -28,11 +30,6 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
     
     @IBAction func submit(sender: UIButton)
     {
-        //TO DO: replace with real logic
-//        print(nameTextField.text);
-//        print(bruinIDTextField.text);
-//        print(genderControl.titleForSegment(at: genderControl.selectedSegmentIndex));
-        
         KCSUser.active().setValue(nameTextField.text, forAttribute: "name")
         KCSUser.active().setValue(bruinIDTextField.text, forAttribute: "UID")
         KCSUser.active().setValue(ageTextField.text, forAttribute: "age")
@@ -41,6 +38,8 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         KCSUser.active().save { (error) -> Void in
             print(error)
         }
+        
+        self.tabBarController?.selectedIndex = 0
     }
     
     @IBAction func logout(sender: UIButton)
@@ -60,6 +59,32 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         }
         else {
             return true;
+        }
+    }
+    
+    func loadExisitingValues() {
+        if let name = KCSUser.active().getValueForAttribute("name")
+        {
+            nameTextField.text = name as! String
+        }
+        if let bruinID = KCSUser.active().getValueForAttribute("UID")
+        {
+            bruinIDTextField.text = bruinID as! String
+        }
+        if let age = KCSUser.active().getValueForAttribute("age")
+        {
+            ageTextField.text = age as! String
+        }
+        if let major = KCSUser.active().getValueForAttribute("major")  {
+            majorTextField.text = major as! String
+        }
+        if let gender = KCSUser.active().getValueForAttribute("gender"){
+            if (gender as! String == "Male") {
+                genderControl.selectedSegmentIndex = 0;
+            }
+            else {
+                genderControl.selectedSegmentIndex = 1;
+            }
         }
     }
     
