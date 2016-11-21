@@ -1,4 +1,4 @@
 <% for(var i=0; i<events.length; i++) {%>
   <a href=<%= "events/" + events[i].id %>><h2><%= events[i].name %></h2></a>
-  <h4><%= events[i].description.substring(0, 100) %></h4>
+  <h4><%= events[i].description %></h4>
 <% } %>
