@@ -17,9 +17,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var btnFacebook: FBSDKLoginButton!
     
     override func viewDidLoad() {
-        
-
-
         super.viewDidLoad()
         configureFacebook()
         setBackground()
@@ -67,9 +64,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 //                print("Log in successfully!")
 //            }
 //        }
-        print("is new user:", isNewUser)
-       
-        
         KCSUser.login(
             withSocialIdentity: .socialIDFacebook, //.socialIDTwitter, or .socialIDLinkedIn, or .socialIDSalesforce
             accessDictionary: [ KCSUserAccessTokenKey : FBSDKAccessToken.current().tokenString ]
@@ -84,9 +78,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("Error: \(error)")
             }
         }
-        
-        
-        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!)
