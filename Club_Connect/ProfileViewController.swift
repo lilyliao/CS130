@@ -19,6 +19,9 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         super.viewDidLoad()
         self.tabBarController?.delegate = self;
         loadExisitingValues()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+
     // Do any additional setup after loading the view.
     }
     
@@ -98,6 +101,12 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     /*
     // MARK: - Navigation
 
