@@ -17,9 +17,16 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     var highlightView   : UIView = UIView()
     
+    var event : KinveyEventData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeBarcode()
+        if (KCSUser.active()) != nil {
+            print("user is active")
+        } else {
+            print("user is not active")
+        }
     }
     /**
         Initialize iPhone camera and prepare to scan for barcode
@@ -60,6 +67,58 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     }
     
+    
+    func userCheckIn(student_id : String, event : KinveyEventData ) {
+        let collection = KCSCollection.user()
+        let userStore = KCSAppdataStore(collection: collection, options: nil)!
+        var alert = UIAlertController()
+        
+        userStore.query(
+            withQuery: KCSQuery(onField: "UID", withExactMatchForValue: student_id as NSString),
+            withCompletionBlock: { usersOrNil, errorOrNil in
+                if errorOrNil != nil {
+                    //An error happened, just log for now
+                    print("An error occurred on fetch: \(errorOrNil)");
+                } else {
+                    if let user = usersOrNil?.first as? KCSUser {
+                        let attendee_name = user.getValueForAttribute("name") as! String
+                        let collection = KCSCollection(from: "Event", of: KinveyEventData.self)
+                        let dataStore = KCSAppdataStore(collection: collection, options: nil)!
+                        dataStore.save(
+                            event,
+                            withCompletionBlock: { objectsOrNil, errorOrNil in
+                                if let objectsOrNil = objectsOrNil?.first as? KinveyEventData {
+                                    //save was successful
+                                    alert = UIAlertController(title: attendee_name, message: "check in", preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                                    self.present(alert, animated: true, completion: {
+                                        self.session.startRunning()
+                                        
+                                    })
+
+                                    
+                                } else if let errorOrNil = errorOrNil as? NSError {
+                                    //save failed
+                                    print("Save failed, with error: \(errorOrNil.localizedFailureReason)")
+                                }
+                        },
+                            withProgressBlock: nil
+                        )
+                    } else {
+                        alert = UIAlertController(title: "User Not found", message: "Download the App and register", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: {
+                            self.session.startRunning()
+                            
+                        })
+                    }
+                }
+        },
+            withProgressBlock: nil
+        )
+    }
+
+    
     // This is called when we find a known barcode type with the camera.
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
@@ -69,6 +128,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         var detectionString : String!
         
+        var student_id : String!
         
         
         let barCodeTypes = [AVMetadataObjectTypeUPCECode,
@@ -95,67 +155,35 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     highlightViewRect = barCodeObject.bounds
                     
                     detectionString = (metadata as! AVMetadataMachineReadableCodeObject).stringValue
-                    print(detectionString)
-                    if(detectionString != nil) {
-                        self.session.stopRunning()
-                        
-                        var alert = UIAlertController()
-                        
-                        //                        let headers = [
-                        //                            "X-Mashape-Key": "jY0bEhHCBpmsh8j1mpA5p11tCJGyp1tok3Zjsn4ubbvNNp5Jt3",
-                        //                            "Accept": "application/json"
-                        //                        ]
-                        //                        let url = "https://nutritionix-api.p.mashape.com/v1_1/item?upc=" + detectionString
-                        // BAD PRACTICE: turned off NSAppTransportSecurity by following the instruction http://stackoverflow.com/questions/32755674/ios9-getting-error-an-ssl-error-has-occurred-and-a-secure-connection-to-the-ser
-                        //                        Alamofire.request(.GET, url, headers: headers)
-                        //                            .responseJSON { response in
-                        //                                if let JSON = response.result.value {
-                        //
-                        //                                    if let optional_error_code = JSON.value(forKey: "error_code") {
-                        //                                        let error_code = optional_error_code as! String
-                        //                                        if error_code == "item_not_found" {
-                        //                                            print("not found")
-                        //                                            alert = UIAlertController(title: "Item Not found", message: "Only support U.S. food products: Item ID or UPC was invalid", preferredStyle: UIAlertControllerStyle.alert)
-                        //                                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                        //                                            self.present(alert, animated: true, completion: {
-                        //                                                self.session.startRunning()
-                        //
-                        //                                            })
-                        //                                        }
-                        //                                    } else {
-                        //                                        self.nutrition = JSON
-                        //                                        //                                        if let jsonResult = JSON as? Dictionary<String, AnyObject> {
-                        //                                        //
-                        //                                        //                                            print(Array(jsonResult.keys)[0])
-                        //                                        //                                            print(Array(jsonResult.values)[0])
-                        //                                        //                                        }
-                        //                                        super.performSegue(withIdentifier: "nutritionSegue", sender: self)
-                        //                                        self.session.startRunning()
-                        //                                    }
-                        //
-                        //
-                        //
-                        //                                }
-                        //                        }
-                        //
-                        self.highlightView.frame = highlightViewRect
-                        self.view.bringSubview(toFront: self.highlightView)
-                        break
-                    }
                     
+                    if(detectionString != nil) {
+                        print(detectionString)
+//                        student_id = (detectionString as NSString).substring(with: NSMakeRange(0, 9))
+                        student_id = String(detectionString.characters.dropLast())
+                        if(student_id != nil) {
+                            self.session.stopRunning()
+                            
+                            event.attendee_id = student_id
+                            self.userCheckIn(student_id: student_id!, event: event!)
+                        
+                            
+                        }
+
+                    }
+                    self.highlightView.frame = highlightViewRect
+                    self.view.bringSubview(toFront: self.highlightView)
+                    break
                 }
             }
         }
-        
-        
-        
-        
-        
-        func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
-        
-        
     }
+    
+        
+        
+        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 }

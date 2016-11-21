@@ -80,7 +80,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="vlf-rD-wrS"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="scanner" id="vlf-rD-wrS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self;
+//        self.tabBarController?.delegate = self;
         // Do any additional setup after loading the view.
     }
 

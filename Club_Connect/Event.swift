@@ -28,3 +28,19 @@ struct Event {
         self.rsvp_status = rsvp_status
     }
 }
+class KinveyEventData : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPersistable
+    var entityId: String? //Kinvey entity _id
+    var name: String?
+    var attendee_id: String?
+    var event_fb_id: String?
+    var metadata: KCSMetadata? //Kinvey metadata, optional
+    override func hostToKinveyPropertyMapping() -> [AnyHashable : Any]! {
+        return [
+            "entityId" : KCSEntityKeyId, //the required _id field
+            "name" : "name",
+            "attendee_id" : "attendee_id",
+            "event_fb_id" : "event_fb_id",
+            "metadata" : KCSEntityKeyMetadata //optional _metadata field
+        ]
+    }
+}
