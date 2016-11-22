@@ -1,4 +1,43 @@
-<% for(var i=0; i<events.length; i++) {%>
-  <a href=<%= "events/" + events[i].id %>><h2><%= events[i].name %></h2></a>
-  <h4><%= events[i].description %></h4>
-<% } %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event List</title>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/dashboardStyle.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Event List
+                </h1>
+            </div>
+        </div>
+        <% for(var i=0; i<events.length; i++) {%>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4>
+                    <i class="fa fa-fw fa-check"></i>
+                    <%= events[i].name %>
+                  </h4>
+                </div>
+                <div class="panel-body">
+                  <p><%= events[i].description %></p>
+                  <b><a href=<%= "events/" + events[i].id %>>View Analytics</a></b>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery</script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+  </body>
+</html> 

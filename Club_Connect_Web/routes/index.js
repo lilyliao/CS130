@@ -7,70 +7,56 @@ Kinvey.init({
   appSecret: 'fa298122b975486c8ba15d9d8b4c52f5'
 });
 
-var promise = Kinvey.ping().then(function(response) {
-  console.log('Kinvey Ping Success. Kinvey Service is alive, version: ' + response.version + ', response: ' + response.kinvey);
-}).catch(function(error) {
-  console.log('Kinvey Ping Failed. Response: ' + error.description);
-});
+// var promise = new Promise(function(resolve) {
+//   resolve(Kinvey.User.getActiveUser());
+// });
+// promise = promise.then(function onSuccess(user) {
+//   if (user) {
+//     return user.me();
+//   }
+//   return user;
+// }).then(function onSuccess(user) {
+// 	console.log(user)
+// 	if (user==null) {
+// 		var user = new Kinvey.User();
+// 		var promise = user.signup({
+// 		  username: 'username',
+// 		  password: 'password'
+// 		}).then(function onSuccess(user) {
+// 		var dataStore = Kinvey.DataStore.collection('events');
+// 		var stream = dataStore.find();
+// 		stream.subscribe(function onNext(entities) {
+// 			  console.log(entities)
+// 			}, function onError(error) {
+// 			  console.log(error)
+// 			}, function onComplete() {
+// 			  console.log(entities)
+// 			});
 
+// 		}).catch(function onError(error) {
+// 		  var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
+// 		    console.log("logged in");
+// 		    var dataStore = Kinvey.DataStore.collection('events');
+// 				var stream = dataStore.find();
+// 				stream.subscribe(function onNext(entities) {
+// 					  console.log(entities)
+// 					}, function onError(error) {
+// 					  console.log(error)
+// 					}, function onComplete() {
+// 					  console.log(entities)
+// 				});
 
-var promise = new Promise(function(resolve) {
-  resolve(Kinvey.User.getActiveUser());
-});
-promise = promise.then(function onSuccess(user) {
-  if (user) {
-    return user.me();
-  }
-  return user;
-}).then(function onSuccess(user) {
-	console.log(user)
-	if (user==null) {
-		var user = new Kinvey.User();
-		var promise = user.signup({
-		  username: 'username',
-		  password: 'password'
-		}).then(function onSuccess(user) {
-		var dataStore = Kinvey.DataStore.collection('events');
-		var stream = dataStore.find();
-		stream.subscribe(function onNext(entities) {
-			  console.log(entities)
-			}, function onError(error) {
-			  console.log(error)
-			  console.log(error)
-			}, function onComplete() {
-			  console.log(entities)
-			});
+// 		}).catch(function onError(error) {
+// 		  console.log(error);
+// 		});
+// 		});	
+// 	}
+// 	else{
+// 	}
 
-		}).catch(function onError(error) {
-		  var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
-		    console.log("logged in");
-		    var dataStore = Kinvey.DataStore.collection('events');
-				var stream = dataStore.find();
-				stream.subscribe(function onNext(entities) {
-					  console.log(entities)
-					}, function onError(error) {
-					  console.log(error)
-					  console.log(error)
-					}, function onComplete() {
-					  console.log(entities)
-				});
-
-		}).catch(function onError(error) {
-		  console.log(error);
-		});
-		});	
-	}
-	else{
-
-	}
-
-}).catch(function onError(error) {
-	console.log(error)
-});
-
-
-
-
+// }).catch(function onError(error) {
+// 	console.log(error)
+// });
 
 var options = {
     timeout:  3000
@@ -108,18 +94,44 @@ module.exports = function (passport, graph) {
 
 	router.get('/events/:id', function (req, res) {
 		var id = req.url.split('/')[2];
-		for (var i = 0; i < userEvents.length; i++) {
-			if (id == userEvents[i].id) {
-				res.render('event.ejs', {
-					event: userEvents[i],
-				});
+		// pass that as array to event.ejs
+		// event.ejs uses jquery and d3.js to chart
+		graph.setOptions(options).get("/" + id + "?fields=attending_count,declined_count,interested_count,noreply_count", function(err, data) {
+			if (err) {
+				res.end(err);
 			}
-		}
-		res.end("Invalid event id");
+			else {
+				for (var i = 0; i < userEvents.length; i++) {
+					if (id == userEvents[i].id) {
+						for (var key in userEvents[i]) {
+							data[key] = userEvents[i][key];
+						}
+						/*
+						data is JSON object with following properties:
+							attending_count
+							declined_count
+							noreply_count
+							id
+							description
+							end_time
+							name
+							place (json object)
+							start_time
+							rsvp_status
+						*/
+						// TODO: Get Kinvey DB info and pass to event.ejs
+						res.render('event.ejs', {
+							event: data,
+						});
+					}
+				}
+				res.end("Invalid event");
+			}
+		});
 	});
 
 	router.get('/', function(req, res, next) {
-		res.redirect('/auth/facebook');
+		res.render('home');
 	});
 
 	return router;
