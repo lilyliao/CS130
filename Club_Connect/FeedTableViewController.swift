@@ -68,6 +68,14 @@ class FeedTableViewController: UITableViewController {
         let event = events[indexPath.row] as Event
         cell.textLabel?.text = event.name
         cell.detailTextLabel?.text = event.rsvp_status
+        
+        if (cell.detailTextLabel?.text == "attending") {
+            cell.detailTextLabel?.textColor = UIColor(red: 50/255, green: 153/255, blue: 50/255, alpha: 1)
+        }
+        else if (cell.detailTextLabel?.text == "unsure") {
+            cell.detailTextLabel?.textColor = UIColor(red: 229/255, green: 148/255, blue: 0, alpha: 1)
+        }
+        
         return cell
     }
     
