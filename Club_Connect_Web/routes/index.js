@@ -7,56 +7,69 @@ Kinvey.init({
   appSecret: 'fa298122b975486c8ba15d9d8b4c52f5'
 });
 
-// var promise = new Promise(function(resolve) {
-//   resolve(Kinvey.User.getActiveUser());
-// });
-// promise = promise.then(function onSuccess(user) {
-//   if (user) {
-//     return user.me();
-//   }
-//   return user;
-// }).then(function onSuccess(user) {
-// 	console.log(user)
-// 	if (user==null) {
-// 		var user = new Kinvey.User();
-// 		var promise = user.signup({
-// 		  username: 'username',
-// 		  password: 'password'
-// 		}).then(function onSuccess(user) {
-// 		var dataStore = Kinvey.DataStore.collection('events');
-// 		var stream = dataStore.find();
-// 		stream.subscribe(function onNext(entities) {
-// 			  console.log(entities)
-// 			}, function onError(error) {
-// 			  console.log(error)
-// 			}, function onComplete() {
-// 			  console.log(entities)
-// 			});
+var kinveyDataInit = function(){
+	var promise = new Promise(function(resolve) {
+  	resolve(Kinvey.User.getActiveUser());
+	});
 
-// 		}).catch(function onError(error) {
-// 		  var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
-// 		    console.log("logged in");
-// 		    var dataStore = Kinvey.DataStore.collection('events');
-// 				var stream = dataStore.find();
-// 				stream.subscribe(function onNext(entities) {
-// 					  console.log(entities)
-// 					}, function onError(error) {
-// 					  console.log(error)
-// 					}, function onComplete() {
-// 					  console.log(entities)
-// 				});
+	promise = promise.then(function onSuccess(user) {
+	  if (user) {
+	    return user.me();
+	  }
+	  return user;
+	}).then(function onSuccess(user) {
+			console.log(user)
+			kinveyDataHelper(user);
+		}).catch(function onError(error) {
+			console.log(error)
+		});
+}
 
-// 		}).catch(function onError(error) {
-// 		  console.log(error);
-// 		});
-// 		});	
-// 	}
-// 	else{
-// 	}
+var kinveyDataHelper = function(user){
+	if (user == null) {
+		var user = new Kinvey.User();
+		var promise = user.signup({
+		  username: 'username',
+		  password: 'password'
+		}).then(function onSuccess(user) {
+			getKinveyEventData(user);
+		}).catch(function onError(error) {
+		 getKinveyEventDataError();
+		});
+	}
+	else{
+	}
+}
 
-// }).catch(function onError(error) {
-// 	console.log(error)
-// });
+var getKinveyEventData = function(user){
+	var dataStore = Kinvey.DataStore.collection('events');
+	var stream = dataStore.find();
+	stream.subscribe(function onNext(entities) {
+		  console.log(entities)
+		}, function onError(error) {
+		  console.log(error)
+		}, function onComplete() {
+		  console.log(entities)
+	});
+}
+
+var getKinveyEventDataError = function(error){
+		var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
+    console.log("logged in");
+    var dataStore = Kinvey.DataStore.collection('events');
+		var stream = dataStore.find();
+		stream.subscribe(function onNext(entities) {
+			  console.log(entities)
+			}, function onError(error) {
+			  console.log(error)
+			}, function onComplete() {
+			  console.log(entities)
+			});
+		}).catch(function onError(error) {
+  		console.log(error);
+	});
+}
+
 
 var options = {
     timeout:  3000
@@ -96,6 +109,8 @@ module.exports = function (passport, graph) {
 		var id = req.url.split('/')[2];
 		// pass that as array to event.ejs
 		// event.ejs uses jquery and d3.js to chart
+		kinveyDataInit();
+
 		graph.setOptions(options).get("/" + id + "?fields=attending_count,declined_count,interested_count,noreply_count", function(err, data) {
 			if (err) {
 				res.end(err);
