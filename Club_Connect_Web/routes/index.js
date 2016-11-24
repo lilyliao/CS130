@@ -42,7 +42,7 @@ var kinveyDataHelper = function(user){
 }
 
 var getKinveyEventData = function(user){
-	var dataStore = Kinvey.DataStore.collection('events');
+	var dataStore = Kinvey.DataStore.collection('Event');
 	var stream = dataStore.find();
 	stream.subscribe(function onNext(entities) {
 		  console.log(entities)
@@ -56,15 +56,7 @@ var getKinveyEventData = function(user){
 var getKinveyEventDataError = function(error){
 		var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
     console.log("logged in");
-    var dataStore = Kinvey.DataStore.collection('events');
-		var stream = dataStore.find();
-		stream.subscribe(function onNext(entities) {
-			  console.log(entities)
-			}, function onError(error) {
-			  console.log(error)
-			}, function onComplete() {
-			  console.log(entities)
-			});
+    getKinveyEventData();
 		}).catch(function onError(error) {
   		console.log(error);
 	});
