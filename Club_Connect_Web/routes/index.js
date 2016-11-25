@@ -7,8 +7,6 @@ Kinvey.init({
   appSecret: 'fa298122b975486c8ba15d9d8b4c52f5'
 });
 
-var kinveyUser;
-
 var kinveyInit = function(){
 	var promise = new Promise(function(resolve) {
   	resolve(Kinvey.User.getActiveUser());
@@ -36,7 +34,6 @@ var kinveyInitHelper = function(user){
 		  password: 'password'
 		}).then(function onSuccess(user) {
 			console.log("logged in")
-			kinveyUser = user;
 		}).catch(function onError(error) {
 			handleKinveySignUpError();
 		});
@@ -45,13 +42,22 @@ var kinveyInitHelper = function(user){
 	}
 }
 
-var getKinveyEventData = function(user,id){
+var getKinveyEventData = function(id){
 	var dataStore = Kinvey.DataStore.collection('Event');
 	var query = new Kinvey.Query();
 	query.equalTo('event_fb_id', id);
 	var stream = dataStore.find(query);
 	stream.subscribe(function onNext(entities) {
-		  console.log(entities)
+		  console.log(entities);
+
+		  if(entities && entities.length){
+		  	kinveyData.data = entities;
+		  	kinveyData.status = 0;
+		  }
+		  else{
+		  	kinveyData.data = [];
+		  	kinveyData.status = -2;
+		  }
 		}, function onError(error) {
 		  console.log(error)
 		}, function onComplete() {
@@ -62,12 +68,15 @@ var getKinveyEventData = function(user,id){
 var handleKinveySignUpError = function(error){
 		var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
     console.log("logged in");
-    kinveyUser = user;
 		}).catch(function onError(error) {
   		console.log(error);
 	});
 }
 
+var kinveyData = {
+	status: -1,	//0 for success, -1 for waiting, -2 for empty
+	data: []
+};
 
 var options = {
     timeout:  3000
@@ -107,7 +116,7 @@ module.exports = function (passport, graph) {
 		var id = req.url.split('/')[2];
 		// pass that as array to event.ejs
 		// event.ejs uses jquery and d3.js to chart
-		getKinveyEventData(kinveyUser,id);
+		getKinveyEventData(id)
 
 		graph.setOptions(options).get("/" + id + "?fields=attending_count,declined_count,interested_count,noreply_count", function(err, data) {
 			if (err) {
@@ -145,6 +154,11 @@ module.exports = function (passport, graph) {
 
 	router.get('/', function(req, res, next) {
 		res.render('home');
+	});
+
+	router.post('/events/get_kinvey_data/', function(req,res){
+		console.log(kinveyData);
+		res.send(kinveyData);
 	});
 
 	return router;

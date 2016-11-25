@@ -15,6 +15,36 @@
   	<br>
   	<center><h1>PUT GRAPHS HERE</h1></center>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      var requestKinveyData = function(){
+        setTimeout(function(){
+          $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+                    url: 'get_kinvey_data',            
+                    success: function(data) {
+                      console.log(data);
+                      if(data.status == 0){
+                        console.log(JSON.stringify(data));
+                      }
+                      else if(data.status == -1){
+                        console.log("try again");
+                        requestKinveyData();
+                      }
+                      else if(data.status == -2){
+                        console.log("No data");
+                      }
+                    },
+                    error: function(error){
+                      console.log(error);
+                    }
+          });
+        }, 2000);
+      }
+      requestKinveyData();
+    </script>
+
+
     <script>window.jQuery</script>
     <script src="/javascripts/bootstrap.min.js"></script>
   </body>
