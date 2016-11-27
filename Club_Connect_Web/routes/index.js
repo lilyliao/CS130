@@ -14,6 +14,7 @@ var kinveyInit = function(){
 
 	promise = promise.then(function onSuccess(user) {
 	  if (user) {
+	  	console.log("active user exists")
 	    return user.me();
 	  }
 	  return user;
@@ -28,31 +29,58 @@ kinveyInit();
 
 var kinveyInitHelper = function(user){
 	if (user == null) {
-		var user = new Kinvey.User();
-		var promise = user.signup({
-		  username: 'username',
-		  password: 'password'
-		}).then(function onSuccess(user) {
-			console.log("logged in")
+		var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
+    console.log("logged in");
+    kinveySaveData();
 		}).catch(function onError(error) {
-			handleKinveySignUpError();
-		});
+  		console.log(error);
+  		handleKinveySignInError();
+	});
 	}
 	else{
 	}
 }
 
+//used to save data, edit as needed
+var kinveySaveData = function(){
+	var dataStore = Kinvey.DataStore.collection('Event');
+		var promise = dataStore.save({
+			//add data to save here
+		}).then(function onSuccess(entity) {
+		  // ...
+		  console.log(entity)
+		}).catch(function onError(error) {
+		  // ...
+		  console.log(error)
+		});
+}
+
+
 var getKinveyEventData = function(id){
 	var dataStore = Kinvey.DataStore.collection('Event');
+
 	var query = new Kinvey.Query();
 	query.equalTo('event_fb_id', id);
 	var stream = dataStore.find(query);
 	stream.subscribe(function onNext(entities) {
-		  console.log(entities);
 
 		  if(entities && entities.length){
-		  	kinveyData.data = entities;
-		  	kinveyData.status = 0;
+		  	var attendee_ids = entities.map(function(a){
+		  		return a.attendee_id;
+		  	});
+
+				var dataStore2 = Kinvey.DataStore.collection('secondary');
+				var query2 = new Kinvey.Query();
+				query2.contains("UID", attendee_ids);
+				var stream2 = dataStore2.find(query2);
+				stream2.subscribe(function onNext(entities) {
+					kinveyData.data = entities;
+		  		kinveyData.status = 0;
+				}, function onError(error) {
+				  console.log(error)
+				}, function onComplete() {
+				  console.log("Complete Secondary Query")
+				});
 		  }
 		  else{
 		  	kinveyData.data = [];
@@ -65,11 +93,15 @@ var getKinveyEventData = function(id){
 	});
 }
 
-var handleKinveySignUpError = function(error){
-		var promise = Kinvey.User.login('username', 'password').then(function onSuccess(user) {
-    console.log("logged in");
-		}).catch(function onError(error) {
-  		console.log(error);
+var handleKinveySignInError = function(){
+	var user = new Kinvey.User();
+	var promise = user.signup({
+  'username': 'username',
+  'password': 'password'
+	}).then(function onSuccess(user) {
+		console.log("sign up default user")
+	}).catch(function onError(error) {
+		console.log(error)
 	});
 }
 
