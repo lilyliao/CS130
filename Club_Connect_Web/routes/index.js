@@ -148,7 +148,12 @@ module.exports = function (passport, graph) {
 		var id = req.url.split('/')[2];
 		// pass that as array to event.ejs
 		// event.ejs uses jquery and d3.js to chart
-		getKinveyEventData(id)
+		getKinveyEventData(id);
+		var query = new Kinvey.Query();
+		query.equalTo('last_name', 'query');
+		// var promise = Kinvey.User.find(query, {
+		// 	discover: true,
+		// });
 
 		graph.setOptions(options).get("/" + id + "?fields=attending_count,declined_count,interested_count,noreply_count", function(err, data) {
 			if (err) {
@@ -173,7 +178,6 @@ module.exports = function (passport, graph) {
 							start_time
 							rsvp_status
 						*/
-						// TODO: Get Kinvey DB info and pass to event.ejs
 						res.render('event.ejs', {
 							event: data,
 						});
