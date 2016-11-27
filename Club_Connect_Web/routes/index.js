@@ -141,7 +141,7 @@ module.exports = function (passport, graph) {
 							start_time
 							rsvp_status
 						*/
-						// TODO: Get Kinvey DB info and pass to event.ejs
+						console.log(data);
 						res.render('event.ejs', {
 							event: data,
 						});
