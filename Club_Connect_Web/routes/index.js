@@ -141,7 +141,6 @@ module.exports = function (passport, graph) {
 							start_time
 							rsvp_status
 						*/
-						console.log(data);
 						res.render('event.ejs', {
 							event: data,
 						});
