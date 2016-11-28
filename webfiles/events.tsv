@@ -1,0 +1,21 @@
+EventID	StartTime	EndTime	DayOfWeek	RSVP	Attended	Location	Food
+1	18	20	Wednesday	32	54	BH 4760	Chipotle
+2	17	19	Monday	21	29	BH 2763	None
+3	12	13	Tuesday	68	75	PAB 1425	Subway
+4	15	17	Friday	18	15	BH 2763	None
+5	14	16	Thursday	56	84	BH 2763	Chipotle
+6	16	21	Wednesday	37	75	BH 4760	None
+7	10	12	Monday	37	18	BH 4760	Subway
+8	17	22	Tuesday	72	75	BH 4760	None
+9	18	20	Friday	76	59	BH 4760	Chipotle
+10	15	19	Thursday	14	17	BH 2763	None
+11	18	22	Wednesday	94	73	BH 2763	Subway
+12	14	16	Monday	28	16	BH 2763	None
+13	22	23	Tuesday	42	84	BH 2763	Chipotle
+14	12	13	Friday	54	71	BH 4760	None
+15	15	20	Thursday	38	82	BH 4760	Subway
+16	16	16	Wednesday	36	98	BH 4760	None
+17	14	16	Monday	57	56	BH 2763	Chipotle
+18	15	17	Tuesday	77	89	BH 2763	None
+19	12	14	Friday	90	96	PAB 1425	Subway
+20	11	13	Friday	11	19	PAB 1425	None
