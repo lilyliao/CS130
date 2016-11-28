@@ -67,6 +67,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     }
     
+    /**
+      *  The core logic for checking in users. First check if the user is already in the database. If so, push the user's UID along with the event's name to the database. If not, ask the user to register.
+      *  @param student_id student's UID
+      *  @param event an Event object to be pushed to database
+     **/
     
     func userCheckIn(student_id : String, event : KinveyEventData ) {
         let collection = KCSCollection.user()
@@ -84,34 +89,45 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         let attendee_name = user.getValueForAttribute("name") as! String
                         let collection = KCSCollection(from: "Event", of: KinveyEventData.self)
                         let dataStore = KCSAppdataStore(collection: collection, options: nil)!
-                        dataStore.save(
-                            event,
-                            withCompletionBlock: { objectsOrNil, errorOrNil in
-                                if let objectsOrNil = objectsOrNil?.first as? KinveyEventData {
-                                    //save was successful
-                                    alert = UIAlertController(title: attendee_name, message: "check in", preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                                    self.present(alert, animated: true, completion: {
-                                        self.session.startRunning()
-                                        
-                                    })
-
-                                    
-                                } else if let errorOrNil = errorOrNil as? NSError {
-                                    //save failed
-                                    print("Save failed, with error: \(errorOrNil.localizedFailureReason)")
-                                }
-                        },
-                            withProgressBlock: nil
-                        )
+                        
+                        alert = UIAlertController(title: "Is this the person that you want to check in?", message: attendee_name, preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+                            action in
+                            switch action.style{
+                            case .default:
+                                dataStore.save(
+                                    event,
+                                    withCompletionBlock: { objectsOrNil, errorOrNil in
+                                        if let objectsOrNil = objectsOrNil?.first as? KinveyEventData {
+                                            //save was successful
+                                            print("Save succeed: \(objectsOrNil)")
+                                            
+                                        } else if let errorOrNil = errorOrNil as? NSError {
+                                            //save failed
+                                            print("Save failed, with error: \(errorOrNil.localizedFailureReason)")
+                                        }
+                                },
+                                    withProgressBlock: nil
+                                )
+                            case .cancel:
+                                print("cancel")
+                                
+                            case .destructive:
+                                print("destructive")
+                            }
+                        }))
+                        
+                        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                        
                     } else {
                         alert = UIAlertController(title: "User Not found", message: "Download the App and register", preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: {
-                            self.session.startRunning()
-                            
-                        })
+                        
                     }
+                    self.present(alert, animated: true, completion: {
+                        self.session.startRunning()
+                        
+                    })
                 }
         },
             withProgressBlock: nil

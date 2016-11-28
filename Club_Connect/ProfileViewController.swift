@@ -65,6 +65,9 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         }
     }
     
+    /**
+      * If the user is in the database, fill with their information
+     **/
     func loadExisitingValues() {
         if let name = KCSUser.active().getValueForAttribute("name")
         {
@@ -91,6 +94,10 @@ class ProfileViewController: UIViewController, UITabBarControllerDelegate{
         }
     }
     
+    
+    /**
+     * Present alert when users didn't fill out information
+     **/
     func presentAlert()
     {
         let alertController = UIAlertController(title: "Incomplete Profile", message: "Please fill out all fields.", preferredStyle: UIAlertControllerStyle.alert)
