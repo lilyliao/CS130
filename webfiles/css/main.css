@@ -1,0 +1,24 @@
+html, body, .container {
+	min-width: 400px;
+	width: auto!important;
+	/*background-color: #0E0B16; /* Void */*/
+}
+
+.graph {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
