@@ -25,9 +25,9 @@
             contentType: 'application/json',
                     url: 'get_kinvey_data',            
                     success: function(data) {
-                      console.log(data);
                       if(data.status == 0){
-                        console.log(JSON.stringify(data));
+                        console.log(data.data["ages"]);
+                        console.log(data.data["majors"]);
                       }
                       else if(data.status == -1){
                         console.log("try again");

@@ -74,7 +74,19 @@ var getKinveyEventData = function(id){
 				query2.contains("UID", attendee_ids);
 				var stream2 = dataStore2.find(query2);
 				stream2.subscribe(function onNext(entities) {
-					kinveyData.data = entities;
+
+				var majors = entities.map(function(a){
+		  		return a.major;
+		  	});
+
+		  	var ages = entities.map(function(a){
+		  		return a.age;
+		  	});
+
+					kinveyData.data = {
+						"majors": majors,
+						"ages": ages
+					};
 		  		kinveyData.status = 0;
 				}, function onError(error) {
 				  console.log(error)
