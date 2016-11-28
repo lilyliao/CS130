@@ -69,6 +69,14 @@ var getKinveyEventData = function(id){
 		  		return a.attendee_id;
 		  	});
 
+		  	var times = entities.map(function(a){
+		  		return a._kmd.lmt;
+		  	});
+
+		  	kinveyData.data={
+		  		"times": times
+		  	}
+
 				var dataStore2 = Kinvey.DataStore.collection('secondary');
 				var query2 = new Kinvey.Query();
 				query2.contains("UID", attendee_ids);
@@ -83,10 +91,9 @@ var getKinveyEventData = function(id){
 		  		return a.age;
 		  	});
 
-					kinveyData.data = {
-						"majors": majors,
-						"ages": ages
-					};
+					kinveyData.data["majors"] = majors;
+					kinveyData.data["ages"] = ages;
+
 		  		kinveyData.status = 0;
 				}, function onError(error) {
 				  console.log(error)
