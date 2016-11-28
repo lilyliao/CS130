@@ -161,7 +161,6 @@
                     url: 'get_kinvey_data',            
                     success: function(data) {
 
-
                       if(data.status == 0){
                         var s = fbEventData.start_time;
                         var t = s.indexOf('T');
@@ -171,16 +170,19 @@
                         var start = date[1] + "/" + date[2] + "/" + date[0] + " @ " + time[0] + ":" + time[1];
 
                         var e = fbEventData.end_time;
-                        t = e.indexOf('T');
-                        date = e.substr(0, t).split('-');
-                        time = e.substr(t+1, e.length-t-2).split(':');
+                        var end = "";
+                        if(e) {
+                          t = e.indexOf('T');
+                          date = e.substr(0, t).split('-');
+                          time = e.substr(t+1, e.length-t-2).split(':');
 
-                        var end = date[1] + "/" + date[2] + "/" + date[0] + " @ " + time[0] + ":" + time[1];
+                          end = "<br>Until<br>" + date[1] + "/" + date[2] + "/" + date[0] + " @ " + time[0] + ":" + time[1];
+                        }
+                        
 
-                        fbEventData.start_time
-                        var end;
+                        
 
-                        $('#start').append('<h4>' + start + "<br>Until<br>" + end + '</h4>')
+                        $('#start').append('<h4>' + start + end + '</h4>')
                         console.log(data.data["ages"]);
                         console.log(data.data["majors"]);
                         console.log(data.data["times"]);
